@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderResult.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sample Microservices</a> &gt; <a href="index.source.html" class="el_package">com.otel.sample.microservices.model</a> &gt; <span class="el_source">OrderResult.java</span></div><h1>OrderResult.java</h1><pre class="source lang-java linenums">package com.otel.sample.microservices.model;
+
+import java.time.LocalDateTime;
+
+public class OrderResult {
+
+    private String orderId;
+    private String status;
+    private String message;
+    private String processedBy;
+    private LocalDateTime timestamp;
+
+<span class="nc" id="L13">    public OrderResult() {</span>
+<span class="nc" id="L14">        this.timestamp = LocalDateTime.now();</span>
+<span class="nc" id="L15">    }</span>
+
+<span class="nc" id="L17">    public OrderResult(String orderId, String status, String message, String processedBy) {</span>
+<span class="nc" id="L18">        this.orderId = orderId;</span>
+<span class="nc" id="L19">        this.status = status;</span>
+<span class="nc" id="L20">        this.message = message;</span>
+<span class="nc" id="L21">        this.processedBy = processedBy;</span>
+<span class="nc" id="L22">        this.timestamp = LocalDateTime.now();</span>
+<span class="nc" id="L23">    }</span>
+
+    // Getters and Setters
+<span class="nc" id="L26">    public String getOrderId() { return orderId; }</span>
+<span class="nc" id="L27">    public void setOrderId(String orderId) { this.orderId = orderId; }</span>
+
+<span class="nc" id="L29">    public String getStatus() { return status; }</span>
+<span class="nc" id="L30">    public void setStatus(String status) { this.status = status; }</span>
+
+<span class="nc" id="L32">    public String getMessage() { return message; }</span>
+<span class="nc" id="L33">    public void setMessage(String message) { this.message = message; }</span>
+
+<span class="nc" id="L35">    public String getProcessedBy() { return processedBy; }</span>
+<span class="nc" id="L36">    public void setProcessedBy(String processedBy) { this.processedBy = processedBy; }</span>
+
+<span class="nc" id="L38">    public LocalDateTime getTimestamp() { return timestamp; }</span>
+<span class="nc" id="L39">    public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L43">        return &quot;OrderResult{&quot; +</span>
+                &quot;orderId='&quot; + orderId + '\'' +
+                &quot;, status='&quot; + status + '\'' +
+                &quot;, message='&quot; + message + '\'' +
+                &quot;, processedBy='&quot; + processedBy + '\'' +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: sample-microservices-test
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+
+app:
+  queue:
+    name: orders.queue
+    products-input: products-input
+    products-output: products-output
+
+server:
+  port: 0

@@ -1,5 +1,6 @@
 package com.otel.sample.microservices.repository;
 
+import com.otel.sample.microservices.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -52,5 +53,20 @@ public class ProductRepository {
         public String getProductId() { return productId; }
         public String getName() { return name; }
         public BigDecimal getPrice() { return price; }
+    }
+
+    // --- Product entity storage ---
+
+    private final Map<String, Product> savedProducts = new ConcurrentHashMap<>();
+
+    public Product save(Product product) {
+        log.debug("Saving product: {}", product.getId());
+        savedProducts.put(product.getId(), product);
+        return product;
+    }
+
+    public Optional<Product> findProductById(String id) {
+        log.debug("Finding product by id: {}", id);
+        return Optional.ofNullable(savedProducts.get(id));
     }
 }

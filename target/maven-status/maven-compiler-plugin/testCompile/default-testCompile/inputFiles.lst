@@ -1,0 +1,5 @@
+/tmp/sdlc-workspaces/impl-PROD-020-2f0728c8/src/test/java/com/otel/sample/microservices/controller/ProductControllerTest.java
+/tmp/sdlc-workspaces/impl-PROD-020-2f0728c8/src/test/java/com/otel/sample/microservices/messaging/ProductMessageConsumerTest.java
+/tmp/sdlc-workspaces/impl-PROD-020-2f0728c8/src/test/java/com/otel/sample/microservices/messaging/ProductMessageProducerTest.java
+/tmp/sdlc-workspaces/impl-PROD-020-2f0728c8/src/test/java/com/otel/sample/microservices/repository/ProductRepositoryEntityTest.java
+/tmp/sdlc-workspaces/impl-PROD-020-2f0728c8/src/test/java/com/otel/sample/microservices/service/impl/ProductServiceImplTest.java

@@ -13,9 +13,25 @@ public class RabbitMQConfig {
     @Value("${app.queue.name:orders.queue}")
     private String queueName;
 
+    @Value("${app.queue.products-input:products-input}")
+    private String productsInputQueueName;
+
+    @Value("${app.queue.products-output:products-output}")
+    private String productsOutputQueueName;
+
     @Bean
     public Queue orderQueue() {
         return new Queue(queueName, true);
+    }
+
+    @Bean
+    public Queue productsInputQueue() {
+        return new Queue(productsInputQueueName, true);
+    }
+
+    @Bean
+    public Queue productsOutputQueue() {
+        return new Queue(productsOutputQueueName, true);
     }
 
     @Bean
