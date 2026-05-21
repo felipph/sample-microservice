@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RabbitMQConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sample Microservices</a> &gt; <a href="index.source.html" class="el_package">com.otel.sample.microservices.config</a> &gt; <span class="el_source">RabbitMQConfig.java</span></div><h1>RabbitMQConfig.java</h1><pre class="source lang-java linenums">package com.otel.sample.microservices.config;
+
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+<span class="fc" id="L12">public class RabbitMQConfig {</span>
+
+    @Value(&quot;${app.queue.name:orders.queue}&quot;)
+    private String orderQueueName;
+
+    @Value(&quot;${app.queue.products-input.name:products-input}&quot;)
+    private String productsInputQueueName;
+
+    @Value(&quot;${app.queue.products-output.name:products-output}&quot;)
+    private String productsOutputQueueName;
+
+    @Bean
+    public Queue orderQueue() {
+<span class="fc" id="L25">        return new Queue(orderQueueName, true);</span>
+    }
+
+    @Bean
+    @Qualifier(&quot;productsInputQueue&quot;)
+    public Queue productsInputQueue() {
+<span class="fc" id="L31">        return new Queue(productsInputQueueName, true);</span>
+    }
+
+    @Bean
+    @Qualifier(&quot;productsOutputQueue&quot;)
+    public Queue productsOutputQueue() {
+<span class="fc" id="L37">        return new Queue(productsOutputQueueName, true);</span>
+    }
+
+    @Bean
+    public MessageConverter jsonMessageConverter() {
+<span class="fc" id="L42">        return new Jackson2JsonMessageConverter();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

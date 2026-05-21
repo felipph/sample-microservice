@@ -3,12 +3,13 @@ package com.otel.sample.microservices.messaging;
 import com.otel.sample.microservices.model.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
  * Produces order messages to RabbitMQ queue.
+ * Nome da fila injetado via @Value para evitar ambiguidade com múltiplos beans Queue.
  */
 @Component
 public class OrderMessageProducer {
@@ -16,16 +17,17 @@ public class OrderMessageProducer {
     private static final Logger log = LoggerFactory.getLogger(OrderMessageProducer.class);
 
     private final RabbitTemplate rabbitTemplate;
-    private final Queue orderQueue;
+    private final String queueName;
 
-    public OrderMessageProducer(RabbitTemplate rabbitTemplate, Queue orderQueue) {
+    public OrderMessageProducer(RabbitTemplate rabbitTemplate,
+                                 @Value("${app.queue.name:orders.queue}") String queueName) {
         this.rabbitTemplate = rabbitTemplate;
-        this.orderQueue = orderQueue;
+        this.queueName = queueName;
     }
 
     public void sendOrder(Order order) {
-        log.info("Sending order to queue: {} - Queue: {}", order.getOrderId(), orderQueue.getName());
-        rabbitTemplate.convertAndSend(orderQueue.getName(), order);
+        log.info("Sending order to queue: {} - Queue: {}", order.getOrderId(), queueName);
+        rabbitTemplate.convertAndSend(queueName, order);
         log.debug("Order sent successfully: {}", order.getOrderId());
     }
 }

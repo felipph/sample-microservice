@@ -1,0 +1,6 @@
+com/otel/sample/microservices/controller/GlobalExceptionHandlerTest.class
+com/otel/sample/microservices/config/TestRabbitConfig.class
+com/otel/sample/microservices/controller/ProductControllerTest.class
+com/otel/sample/microservices/service/impl/ProductServiceImplTest.class
+com/otel/sample/microservices/messaging/OrderMessageProducerTest.class
+com/otel/sample/microservices/integration/ProductFlowIT.class

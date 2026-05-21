@@ -1,0 +1,6 @@
+/tmp/sdlc-workspaces/impl-PROD-E2E-1779383871-1e9e5970/src/test/java/com/otel/sample/microservices/config/TestRabbitConfig.java
+/tmp/sdlc-workspaces/impl-PROD-E2E-1779383871-1e9e5970/src/test/java/com/otel/sample/microservices/controller/GlobalExceptionHandlerTest.java
+/tmp/sdlc-workspaces/impl-PROD-E2E-1779383871-1e9e5970/src/test/java/com/otel/sample/microservices/controller/ProductControllerTest.java
+/tmp/sdlc-workspaces/impl-PROD-E2E-1779383871-1e9e5970/src/test/java/com/otel/sample/microservices/integration/ProductFlowIT.java
+/tmp/sdlc-workspaces/impl-PROD-E2E-1779383871-1e9e5970/src/test/java/com/otel/sample/microservices/messaging/OrderMessageProducerTest.java
+/tmp/sdlc-workspaces/impl-PROD-E2E-1779383871-1e9e5970/src/test/java/com/otel/sample/microservices/service/impl/ProductServiceImplTest.java

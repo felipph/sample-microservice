@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderMessageProducer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sample Microservices</a> &gt; <a href="index.source.html" class="el_package">com.otel.sample.microservices.messaging</a> &gt; <span class="el_source">OrderMessageProducer.java</span></div><h1>OrderMessageProducer.java</h1><pre class="source lang-java linenums">package com.otel.sample.microservices.messaging;
+
+import com.otel.sample.microservices.model.Order;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+/**
+ * Produces order messages to RabbitMQ queue.
+ * Nome da fila injetado via @Value para evitar ambiguidade com múltiplos beans Queue.
+ */
+@Component
+public class OrderMessageProducer {
+
+<span class="fc" id="L17">    private static final Logger log = LoggerFactory.getLogger(OrderMessageProducer.class);</span>
+
+    private final RabbitTemplate rabbitTemplate;
+    private final String queueName;
+
+    public OrderMessageProducer(RabbitTemplate rabbitTemplate,
+<span class="fc" id="L23">                                 @Value(&quot;${app.queue.name:orders.queue}&quot;) String queueName) {</span>
+<span class="fc" id="L24">        this.rabbitTemplate = rabbitTemplate;</span>
+<span class="fc" id="L25">        this.queueName = queueName;</span>
+<span class="fc" id="L26">    }</span>
+
+    public void sendOrder(Order order) {
+<span class="fc" id="L29">        log.info(&quot;Sending order to queue: {} - Queue: {}&quot;, order.getOrderId(), queueName);</span>
+<span class="fc" id="L30">        rabbitTemplate.convertAndSend(queueName, order);</span>
+<span class="fc" id="L31">        log.debug(&quot;Order sent successfully: {}&quot;, order.getOrderId());</span>
+<span class="fc" id="L32">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

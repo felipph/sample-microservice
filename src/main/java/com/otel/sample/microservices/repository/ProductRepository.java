@@ -1,5 +1,6 @@
 package com.otel.sample.microservices.repository;
 
+import com.otel.sample.microservices.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,9 @@ public class ProductRepository {
 
     private final Map<String, ProductInfo> products = new ConcurrentHashMap<>();
 
+    // Mapa de produtos registrados via API (separado do catálogo)
+    private final Map<String, Product> registeredProducts = new ConcurrentHashMap<>();
+
     public ProductRepository() {
         // Initialize with some dummy products
         products.put("PROD-001", new ProductInfo("PROD-001", "Laptop", new BigDecimal("999.99")));
@@ -27,6 +31,22 @@ public class ProductRepository {
         products.put("PROD-003", new ProductInfo("PROD-003", "Keyboard", new BigDecimal("79.99")));
         products.put("PROD-004", new ProductInfo("PROD-004", "Monitor", new BigDecimal("299.99")));
         products.put("PROD-005", new ProductInfo("PROD-005", "Headset", new BigDecimal("149.99")));
+    }
+
+    /**
+     * Salva um produto cadastrado via API.
+     */
+    public Product save(Product product) {
+        log.debug("Salvando produto registrado: {}", product.getProductId());
+        registeredProducts.put(product.getProductId(), product);
+        return product;
+    }
+
+    /**
+     * Busca um produto cadastrado via API pelo ID.
+     */
+    public Optional<Product> findRegisteredById(String productId) {
+        return Optional.ofNullable(registeredProducts.get(productId));
     }
 
     public Optional<ProductInfo> findById(String productId) {
