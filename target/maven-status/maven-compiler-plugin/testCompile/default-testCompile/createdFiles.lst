@@ -1,7 +1,0 @@
-com/otel/sample/microservices/messaging/ProductMessageProducerTest$SentMessage.class
-com/otel/sample/microservices/repository/ProductRepositoryEntityTest.class
-com/otel/sample/microservices/service/impl/ProductServiceImplTest.class
-com/otel/sample/microservices/messaging/ProductMessageProducerTest.class
-com/otel/sample/microservices/controller/ProductControllerTest.class
-com/otel/sample/microservices/messaging/ProductMessageConsumerTest.class
-com/otel/sample/microservices/messaging/ProductMessageProducerTest$1.class
