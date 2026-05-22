@@ -1,5 +1,6 @@
 package com.otel.sample.microservices.repository;
 
+import com.otel.sample.microservices.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,7 @@ public class ProductRepository {
     private static final Logger log = LoggerFactory.getLogger(ProductRepository.class);
 
     private final Map<String, ProductInfo> products = new ConcurrentHashMap<>();
+    private final Map<String, Product> createdProducts = new ConcurrentHashMap<>();
 
     public ProductRepository() {
         // Initialize with some dummy products
@@ -36,6 +38,12 @@ public class ProductRepository {
 
     public boolean existsById(String productId) {
         return products.containsKey(productId);
+    }
+
+    public Product save(Product product) {
+        log.debug("Saving product: {}", product.getProductId());
+        createdProducts.put(product.getProductId(), product);
+        return product;
     }
 
     public static class ProductInfo {

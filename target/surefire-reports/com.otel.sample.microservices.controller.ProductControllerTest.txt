@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.otel.sample.microservices.controller.ProductControllerTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.295 s -- in com.otel.sample.microservices.controller.ProductControllerTest
